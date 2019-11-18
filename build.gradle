@@ -19,8 +19,8 @@ apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion '29.0.2'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
 
     defaultConfig {
         minSdkVersion 15
@@ -33,7 +33,7 @@ dependencies {
     api 'com.squareup.okhttp3:okhttp:4.1.1'
 
     implementation 'com.android.support:support-annotations:28.0.0'
-    implementation ('org.simpleframework:simple-xml:2.7.1') {
+    implementation('org.simpleframework:simple-xml:2.7.1') {
         exclude module: 'stax'
         exclude module: 'stax-api'
         exclude module: 'xpp3'
@@ -45,6 +45,11 @@ dependencies {
 task sourcesJar(type: Jar) {
     classifier = 'sources'
     from android.sourceSets.main.java.srcDirs
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << '-Xlint:deprecation'
+    options.deprecation = false
 }
 
 project.afterEvaluate {

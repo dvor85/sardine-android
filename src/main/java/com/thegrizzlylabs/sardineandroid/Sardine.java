@@ -96,8 +96,8 @@ public interface Sardine
 	 * @return List of resources for this URI including the parent resource itself
 	 * @throws IOException I/O error or HTTP response validation failure
 	 */
-	List<DavResource> propfind(String url, int depth, Set<QName> props) throws IOException;
-
+	List<DavResource> propfind(String url, int depth, Set<QName> props)
+throws IOException;
 	/**
 	 * Runs a report on the given resource using WebDAV <code>REPORT</code>.
 	 *
